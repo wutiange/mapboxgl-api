@@ -1,0 +1,22 @@
+{
+  "name": "@wutiange/mapboxgl-api",
+  "version": "0.0.1",
+  "description": "Encapsulation of mapbox's geocoding interface",
+  "main": "lib/index.js",
+  "author": "wutiange",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node ./src/index.ts"
+  },
+  "devDependencies": {
+    "@types/qs": "^6.9.7",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "qs": "^6.11.2",
+    "whatwg-fetch": "^3.6.2"
+  }
+}
