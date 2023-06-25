@@ -1,10 +1,8 @@
 {
   "name": "@wutiange/mapboxgl-api",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Encapsulation of mapbox's geocoding interface",
   "main": "lib/index.js",
-  "author": "wutiange",
-  "license": "MIT",
   "private": false,
   "scripts": {
     "build": "tsc",
@@ -18,5 +16,16 @@
   "dependencies": {
     "qs": "^6.11.2",
     "whatwg-fetch": "^3.6.2"
+  },
+
+  "repository": "https://github.com/wutiange/mapboxgl-api",
+  "author": "wutiange <wutiange20@qq.com> (https://github.com/wutiange)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wutiange/mapboxgl-api/issues"
+  },
+  "homepage": "https://github.com/wutiange/mapboxgl-api#readme",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   }
 }

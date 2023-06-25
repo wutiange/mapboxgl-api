@@ -1,5 +1,6 @@
 import qs from 'qs'
 import { GeocodeType } from './types/MapboxglGeocodeType'
+import { checkAccessToken, getAccessToken } from './common'
 
 export type ReverseGeocoding = {
   endpoint?: 'mapbox.places' | 'mapbox.places-permanent'
@@ -18,22 +19,11 @@ class MapboxglGeocode {
 
   private static basicUrl = 'https://api.mapbox.com/geocoding'
   private static currentVersion = 'v5'
-  private static access_token?: string
 
   private constructor() {}
 
-  static setAccessToken(access_token?: string) {
-    MapboxglGeocode.access_token = access_token
-  }
-
-  static checkAccessToken() {
-    if (!MapboxglGeocode.access_token) {
-      throw new Error('MapboxglGeocode access_token is not set')
-    }
-  }
-
   static async reverse(reverseOption: ReverseGeocoding) {
-    MapboxglGeocode.checkAccessToken()
+    checkAccessToken()
     const {
       endpoint = 'mapbox.places',
       longitude,
@@ -44,7 +34,7 @@ class MapboxglGeocode {
       ...otherParams
     } = reverseOption
     const params: Record<string, string> = {
-      access_token: MapboxglGeocode.access_token || '',
+      access_token: getAccessToken() || '',
     }
     if (reverseMode) {
       params.reverseMode = reverseMode
@@ -69,9 +59,9 @@ class MapboxglGeocode {
     endpoint?: 'mapbox.places' | 'mapbox.places-permanent' 
     searchText: string
   }) {
-    MapboxglGeocode.checkAccessToken()
+    checkAccessToken()
     return fetch(
-      `${this.basicUrl}/${this.currentVersion}/${endpoint}/${searchText}.json?access_token=${MapboxglGeocode.access_token}`,
+      `${this.basicUrl}/${this.currentVersion}/${endpoint}/${searchText}.json?access_token=${getAccessToken()}`,
     )
       .then(res => res.json()) as Promise<GeocodeType>
   }

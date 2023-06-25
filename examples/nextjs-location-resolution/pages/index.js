@@ -3,7 +3,7 @@ import styles from '../styles/Home.module.css';
 import mapboxglApi from '@wutiange/mapboxgl-api';
 import { useEffect } from 'react';
 console.log(mapboxglApi.MapboxglGeocode)
-mapboxglApi.MapboxglGeocode.setAccessToken("你的accessToken")
+mapboxglApi.setAccessToken("你的accessToken")
 
 export default function Home() {
 
