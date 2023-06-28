@@ -1,6 +1,6 @@
 {
   "name": "@wutiange/mapboxgl-api",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Encapsulation of mapbox's geocoding interface",
   "main": "lib/index.js",
   "private": false,
