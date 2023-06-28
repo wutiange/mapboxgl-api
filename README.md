@@ -1,5 +1,7 @@
 # 基于 mapboxgl 的 api 封装
 
+<span style="color: red">特别提醒，请尽量在后台中使用</span>
+
 ## 1. 安装
 ```
 npm install @wutiange/mapboxgl-api
@@ -20,9 +22,9 @@ mapboxglApi.MapboxglGeocode
 ```ts
 mapboxglApi.setAccessToken("你的 mapboxgl access token")
 ```
-接下来就可以对位置进行解析了，包括从经纬度到为止和从位置到经纬度。
+接下来就可以对位置进行解析了，包括从经纬度到位置和从位置到经纬度。
 ```ts
-// 从经纬度到为止信息
+// 从经纬度到位置信息
 mapboxglApi.MapboxglGeocode.reverse({ longitude: 116.42, latitude: 39.92 }).then((res) => {
   console.log(res)
 })

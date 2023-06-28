@@ -1,3 +1,23 @@
+export type ReverseGeocoding = {
+  endpoint?: 'mapbox.places' | 'mapbox.places-permanent'
+  longitude: number
+  latitude: number
+  country?: string
+  language?: string
+  types?: string
+  reverseMode?: 'distance' | 'score' | 'limit'
+  limit?: number
+  routing?: boolean
+  worldview?: string
+}
+
+export type ForwardGeocoding = {
+  endpoint?: 'mapbox.places' | 'mapbox.places-permanent'
+  searchText: string
+}
+
+
+
 export interface GeocodeType {
   type: string;
   query: string[];

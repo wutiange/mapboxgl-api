@@ -1,19 +1,9 @@
 import qs from 'qs'
-import { GeocodeType } from './types/MapboxglGeocodeType'
+import { ForwardGeocoding, GeocodeType, ReverseGeocoding } from './types/MapboxglGeocodeType'
 import { checkAccessToken, getAccessToken } from './common'
+import axios from 'axios'
 
-export type ReverseGeocoding = {
-  endpoint?: 'mapbox.places' | 'mapbox.places-permanent'
-  longitude: number
-  latitude: number
-  country?: string
-  language?: string
-  types?: string
-  reverseMode?: 'distance' | 'score' | 'limit'
-  limit?: number
-  routing?: boolean
-  worldview?: string
-}
+
 
 class MapboxglGeocode {
 
@@ -49,21 +39,16 @@ class MapboxglGeocode {
       ...params,
       ...otherParams,
     })
-    return fetch(
+    return (await axios.get(
       `${this.basicUrl}/${this.currentVersion}/${endpoint}/${longitude},${latitude}.json?${query}`,
-    )
-      .then(res => res.json()) as Promise<GeocodeType>
+    )).data as GeocodeType
   }
 
-  static async forward({ endpoint = 'mapbox.places', searchText }: {
-    endpoint?: 'mapbox.places' | 'mapbox.places-permanent' 
-    searchText: string
-  }) {
+  static async forward({ endpoint = 'mapbox.places', searchText }: ForwardGeocoding) {
     checkAccessToken()
-    return fetch(
+    return (await axios.get(
       `${this.basicUrl}/${this.currentVersion}/${endpoint}/${searchText}.json?access_token=${getAccessToken()}`,
-    )
-      .then(res => res.json()) as Promise<GeocodeType>
+    )).data as GeocodeType
   }
 }
 
