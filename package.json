@@ -1,6 +1,6 @@
 {
   "name": "@wutiange/mapboxgl-api",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Encapsulation of mapbox's geocoding interface",
   "main": "lib/index.js",
   "private": false,
@@ -9,13 +9,11 @@
     "dev": "ts-node ./src/index.ts"
   },
   "devDependencies": {
-    "@types/qs": "^6.9.7",
     "ts-node": "^10.9.1",
     "typescript": "^5.0.4"
   },
   "dependencies": {
-    "axios": "^1.4.0",
-    "qs": "^6.11.2"
+    "axios": "^1.4.0"
   },
   "repository": "https://github.com/wutiange/mapboxgl-api",
   "author": "wutiange <wutiange20@qq.com> (https://github.com/wutiange)",
