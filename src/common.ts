@@ -17,10 +17,26 @@ function checkAccessToken() {
 }
 
 const BaseURL = 'https://api.mapbox.com/'
-const TimeOut = 10000
-const mapboxglInstance = axios.create({
+const Timeout = 10000
+let mapboxglInstance = axios.create({
   baseURL: BaseURL,
-  timeout: TimeOut,
+  timeout: Timeout,
 })
 
-export { mapboxglInstance, checkAccessToken, getAccessToken, setAccessToken }
+function setTimeout(timeout: number) {
+  mapboxglInstance = axios.create({
+    baseURL: BaseURL,
+    timeout,
+  })
+}
+
+function getMapboxglInstance() {
+  return mapboxglInstance
+}
+
+const MapboxGL = {
+  setAccessToken,
+  setTimeout
+}
+
+export { getMapboxglInstance, checkAccessToken, getAccessToken, MapboxGL }

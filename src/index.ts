@@ -1,4 +1,4 @@
 
-export { MapboxglGeocode } from './MapboxglGeocode'
-export { setAccessToken } from './common'
-export { ForwardGeocoding, ReverseGeocoding, GeocodeType, Geometry, Properties, Context, Feature, EndpointType } from '../types/MapboxglGeocodeType'
+export { Geocoding } from './Geocoding'
+export { MapboxGL } from './common'
+export { ForwardGeocoding, ReverseGeocoding, GeocodingResponseType, Geometry, Properties, Context, Feature, EndpointType } from '../types/GeocodingType'
