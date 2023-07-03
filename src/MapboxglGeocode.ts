@@ -1,13 +1,12 @@
-import { ForwardGeocoding, GeocodeType, ReverseGeocoding } from './types/MapboxglGeocodeType'
-import { checkAccessToken, getAccessToken } from './common'
+import { checkAccessToken, getAccessToken, mapboxglInstance } from './common'
 import axios from 'axios'
+import { ForwardGeocoding, GeocodeType,ReverseGeocoding } from '../types/MapboxglGeocodeType'
 
 
 
 class MapboxglGeocode {
 
-  private static basicUrl = 'https://api.mapbox.com/geocoding'
-  private static currentVersion = 'v5'
+  private static readonly path = 'geocoding/v5'
 
   private constructor() { }
 
@@ -18,28 +17,28 @@ class MapboxglGeocode {
       longitude,
       latitude,
     } = reverseOption
-    return (await axios.get(
-      `${this.basicUrl}/${this.currentVersion}/${endpoint}/${longitude},${latitude}.json`, {
+
+    return (await mapboxglInstance.get<GeocodeType>(`${this.path}/${endpoint}/${longitude},${latitude}.json`, {
       params: {
         ...reverseOption,
         endpoint,
         access_token: getAccessToken() || '',
       }
-    })).data as GeocodeType
+    })).data
   }
 
   static async forward({ endpoint = 'mapbox.places', searchText }: ForwardGeocoding) {
     checkAccessToken()
-    return (await axios.get(
-      `${this.basicUrl}/${this.currentVersion}/${endpoint}/${searchText}.json`,
+    return (await axios.get<GeocodeType>(
+      `${this.path}/${endpoint}/${searchText}.json`,
       {
         params: {
           endpoint,
           searchText,
           access_token: getAccessToken() || '',
         }
-      })).data as GeocodeType
+      })).data
   }
 }
 
-export default MapboxglGeocode
+export { MapboxglGeocode }

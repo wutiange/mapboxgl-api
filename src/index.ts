@@ -1,10 +1,4 @@
 
-import MapboxglGeocode from './MapboxglGeocode'
-import { setAccessToken } from './common'
-
-
-
-export default {
-  MapboxglGeocode,
-  setAccessToken
-}
+export { MapboxglGeocode } from './MapboxglGeocode'
+export { setAccessToken } from './common'
+export { ForwardGeocoding, ReverseGeocoding, GeocodeType, Geometry, Properties, Context, Feature, EndpointType } from '../types/MapboxglGeocodeType'

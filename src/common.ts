@@ -1,15 +1,26 @@
+import axios from 'axios'
+
 let access_token: string | null = null
 
-export const setAccessToken = (token: string) => {
+const setAccessToken = (token: string) => {
   access_token = token
 }
 
-export const getAccessToken = () => {
+const getAccessToken = () => {
   return access_token
 }
 
-export function checkAccessToken() {
+function checkAccessToken() {
   if (!access_token) {
     throw new Error('MapboxglGeocode access_token is not set')
   }
 }
+
+const BaseURL = 'https://api.mapbox.com/'
+const TimeOut = 10000
+const mapboxglInstance = axios.create({
+  baseURL: BaseURL,
+  timeout: TimeOut,
+})
+
+export { mapboxglInstance, checkAccessToken, getAccessToken, setAccessToken }
