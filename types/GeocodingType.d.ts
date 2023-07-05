@@ -114,6 +114,19 @@ For more information on which specific languages are supported, see the [langua
   proximity?: string
 }
 
+interface BatchReverseGeocoding extends GeocodingOption {
+  /**
+   * * For batch reverse queries.*  The longitude and latitude, respectively, of the locations being queried. You may supply at most 50 longitude-latitude coordinate pairs within one request.
+   */
+  lngLats: number[][]
+}
+
+interface BatchForwardGeocoding extends GeocodingOption {
+  /**
+   * *For batch forward queries.*  The features to look up (addresses, point of interest names, city names, etc.). They should be expressed as URL-encoded UTF-8 strings, and must not contain the semicolon character (either raw or URL-encoded), as this is the delimiter between search items. Each search text, once decoded, must consist of at most 20 words and numbers separated by spacing and punctuation, and at most 256 characters. You may supply at most 50 search texts within one request.
+   */
+  searchTexts: string[]
+}
 
 
 interface GeocodingResponseType {
@@ -245,4 +258,4 @@ interface Properties {
 
 
 
-export { ReverseGeocoding, ForwardGeocoding, GeocodingResponseType, Geometry, Properties, Context, Feature, EndpointType } 
+export { ReverseGeocoding, ForwardGeocoding, GeocodingResponseType, Geometry, Properties, Context, Feature, EndpointType, BatchForwardGeocoding, BatchReverseGeocoding } 
