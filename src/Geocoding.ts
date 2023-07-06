@@ -45,7 +45,7 @@ class Geocoding {
 
   static async batchForward({ searchTexts, endpoint }: BatchForwardGeocoding, axiosConfig?: AxiosRequestConfig<any>) {
     checkAccessToken()
-    if (endpoint !== 'mapbox.places-permanent') {
+    if (endpoint && endpoint !== 'mapbox.places-permanent') {
       throw new Error('endpoint currently only supports mapbox places permanent.')
     }
     if (!Array.isArray(searchTexts)) {
@@ -53,7 +53,7 @@ class Geocoding {
     }
     const params = searchTexts.join(';')
     return (await getMapboxglInstance().get<GeocodingResponseType>(
-      `${this.path}/mapbox.places/mapbox.places-permanent/${params}.json`,
+      `${this.path}/mapbox.places-permanent/${params}.json`,
       {
         ...axiosConfig,
         params: {
@@ -64,7 +64,7 @@ class Geocoding {
 
   static async batchReverse({ lngLats, endpoint }: BatchReverseGeocoding, axiosConfig?: AxiosRequestConfig<any>) {
     checkAccessToken()
-    if (endpoint !== 'mapbox.places-permanent') {
+    if (endpoint && endpoint !== 'mapbox.places-permanent') {
       throw new Error('endpoint currently only supports mapbox places permanent.')
     }
     if (!Array.isArray(lngLats)) {
@@ -72,7 +72,7 @@ class Geocoding {
     }
     const params = lngLats.map((lngLat) => lngLat.join(',')).join(';')
     return (await getMapboxglInstance().get<GeocodingResponseType>(
-      `${this.path}/mapbox.places/mapbox.places-permanent/${params}.json`,
+      `${this.path}/mapbox.places-permanent/${params}.json`,
       {
         ...axiosConfig,
         params: {
