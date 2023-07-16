@@ -1,6 +1,6 @@
 # Encapsulation of mapboxgl API based on
 
-Document Language: [Chinese](./language/zh-README.md) | English
+Document Language: [中文](./language/zh-README.md) | English
 
 **<span style="color: red">Special reminder, please use it in the backend as much as possible</span>**, as exposing the `access token` in the frontend is risky.
 

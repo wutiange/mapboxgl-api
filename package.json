@@ -24,5 +24,10 @@
   "homepage": "https://github.com/wutiange/mapboxgl-api#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
-  }
+  },
+  "files": [
+    "src",
+    "types",
+    "lib"
+  ]
 }
